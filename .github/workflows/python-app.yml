@@ -38,3 +38,15 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+          username: ${{ "vinayakmajgaonkar0406" }}
+          password: ${{ "Vinimo@1402" }}
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Build and push
+      uses: docker/build-push-action@v6
+      with:
+          push: true
+          tags: ${{ "vinayakmajgaonkar0406" }}/clockbox:latest
